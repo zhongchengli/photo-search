@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Photos } from "./components/Photos";
-import { Tags } from "./components/Tags";
-import { Pagination } from "./components/Pagination";
-import SearchBar from "./components/SearchBar";
+import { Photos } from "./Photos";
+import { Tags } from "./Tags";
+import { Pagination } from "./Pagination";
+import SearchBar from "./SearchBar";
 
 
-export default class PhotoSearchApp extends Component {
+export default class App extends Component {
   state = {
     total: 0,
     total_pages: 0,
