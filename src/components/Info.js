@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 const Info = ({ onClick, text, isDisplay }) => {
   return (
@@ -20,4 +21,4 @@ Info.propTypes = {
   isDisplay: PropTypes.bool.isRequired
 }
 
-export default Info
+export default connect()(Info)

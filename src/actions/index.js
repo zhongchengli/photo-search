@@ -1,6 +1,9 @@
 export const SEARCH_TAG = 'SEARCH_TAG'
 export const CLICK_ON_TAG = 'CLICK_ON_TAG'
 export const GOTO_PAGE = 'GOTO_PAGE'
+export const KEY_ENTER_UP = 'KEY_ENTER_UP'
+
+// NOTE: Action Creator
 
 export const searchTag = tag => {
   return {
@@ -23,6 +26,13 @@ export const gotoPage = page => {
   }
 }
 
+export const keyEnterUpListner = tag => {
+  return {
+    type: KEY_ENTER_UP,
+    tag
+  }
+}
+
 export const REQUEST_GETS = 'REQUEST_GETS'
 
 export const requestGets = (tag, page) => {
@@ -39,6 +49,9 @@ export const receiveGets = (tag, json) => {
   return {
     type: RECEIVE_GETS,
     tag,
+    /**
+     * @param {{ data: any; }} child
+     */
     gets: json.data.children.map(child => child.data),
     recievedAt: Date.now()
   }
