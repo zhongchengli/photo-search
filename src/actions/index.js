@@ -9,10 +9,10 @@ const CLIENT_ID = 'kxFcWqxQgzwyAgCCTrBJJZm4caXqR_KlqbIjcwko6T8'
 // NOTE: Action Creator
 
 export const searchQuery = (tag, curr_page) => {
+  const query = { tag, curr_page }
   return {
-    type: SEARCH_TAG,
-    tag,
-    curr_page
+    type: REQUEST_GETS,
+    query
   }
 }
 

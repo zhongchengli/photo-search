@@ -1,28 +1,14 @@
 import React, { Component } from 'react'
-import { fetchGetsIfNeeded, searchQuery } from '../actions';
+import { searchQuery } from '../actions';
 import { connect } from 'react-redux';
 
 
 class SearchBar extends Component {
 
-  componentDidMount() {
-    console.log('calling componentDidMount() in SearchBar')
-    const { dispatch, query } = this.props;
-    console.log('this.props = ', this.props);
-    dispatch(fetchGetsIfNeeded(query.tag, query.curr_page))
-  }
 
-  componentDidUpdate(prevProps) {
-    console.log('calling componentDidUpdate() in SearchBar and prevProps = ', prevProps)
-    if (prevProps.query !== this.props.query) {
-      const { dispatch, query } = this.props;
-      dispatch(fetchGetsIfNeeded(query.tag, query.curr_page))
-    }
+  handleSubmit = (tag, curr_page) => {
+    this.props.dispatch(searchQuery(tag, curr_page))
   }
-
-  // handleSubmit = (tag, curr_page) => {
-  //   this.props.dispatch(searchQuery(tag, curr_page))
-  // }
 
   render() {
     const { dispatch } = this.props
@@ -36,6 +22,7 @@ class SearchBar extends Component {
           if (!textInput.value.trim()) {
             return
           }
+          console.log('test')
           dispatch(searchQuery(textInput.value, 1))
         }}>
           <div className="container">
@@ -64,7 +51,7 @@ class SearchBar extends Component {
 
 const mapStateToProps = state => {
   console.log('calling mapStateToProps in SearchBar and state = ', state)
-  const { query } = state
+  const { query, } = state
   return {
     query
   }

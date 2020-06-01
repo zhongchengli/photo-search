@@ -1,7 +1,7 @@
 import React from 'react'
 // import Info from "./Info"
-import Album from '../constainers/Album'
 import SearchBar from '../constainers/SearchBar'
+import Photos from '../constainers/Photos'
 // import TabBar from '../constainers/TabBar'
 // import Pagination from '../constainers/Pagination'
 
@@ -12,7 +12,7 @@ const App = () => {
       <SearchBar />
       {/* <TabBar /> */}
       {/* <Pagination /> */}
-      <Album />
+      <Photos />
     </div>
   )
 }
