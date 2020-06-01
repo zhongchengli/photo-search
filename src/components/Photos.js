@@ -3,6 +3,8 @@ import Photo from './Photo';
 
 const Photos = ({ photos }) => {
 
+  console.log('photos = ', photos)
+
   return (
     <div className="container">
       <div className="album">
