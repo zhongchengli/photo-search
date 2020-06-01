@@ -40,7 +40,10 @@ export const keyEnterUpListner = tag => {
 
 // API call
 const fetchGets = (tag, curr_page) => dispatch => {
-  if (tag) {
+  console.log('calling fetchGets in action index')
+  console.log('tag = ', tag)
+  console.log('curr_page = ', curr_page)
+  if (tag === '') {
     return
   }
   dispatch(requestGets(tag, curr_page))
@@ -73,7 +76,7 @@ const shouldFetchGets = state => {
   console.log('calling shouldFetchGets in action index and state = ', state)
   const { query } = state
   console.log('query = ', query)
-  const gets = state.getsByTag[query.tag]
+  const gets = state.getsByQuery[query.tag]
 
   if (!gets) {
     return true
@@ -85,7 +88,8 @@ const shouldFetchGets = state => {
 
 export const fetchGetsIfNeeded = (tag, curr_page) => (dispatch, getState) => {
   console.log('calling fetchGetsIfNeeded in actions');
-  if (shouldFetchGets(getState(), tag)) {
+  if (shouldFetchGets(getState())) {
+    console.log('calling dispatch(fetchGets(tag, curr_page)) in fetchGetsIfNeeded in actions');
     return dispatch(fetchGets(tag, curr_page))
   }
 }

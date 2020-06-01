@@ -9,6 +9,7 @@ import Photos from '../components/Photos'
 
 const mapStateToProps = state => {
   const { query, getsByQuery } = state
+  console.log('calling mapStateToProps in Album containers and state = ', state);
   const {
     isFetching,
     lastUpdated,

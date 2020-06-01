@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-// import { connect } from 'react-redux'
 import { fetchGetsIfNeeded, searchQuery } from '../actions';
+import { connect } from 'react-redux';
 
 
 class SearchBar extends Component {
@@ -62,15 +62,13 @@ class SearchBar extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   console.log('calling mapStateToProps in SearchBar and state = ', state)
-//   const { query, getsByQuery } = state
-//   const { isFetching, lastUpdated, items: photos }
-//     = getsByQuery[query] || { isFetching: true, items: [] }
-//   return {
-//     query, photos, isFetching, lastUpdated
-//   }
-// }
+const mapStateToProps = state => {
+  console.log('calling mapStateToProps in SearchBar and state = ', state)
+  const { query } = state
+  return {
+    query
+  }
+}
 
-// export default connect(mapStateToProps)(SearchBar)
-export default SearchBar
+export default connect(mapStateToProps)(SearchBar)
+// export default SearchBar

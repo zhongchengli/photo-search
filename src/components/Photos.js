@@ -1,9 +1,16 @@
 import React from 'react';
 import Photo from './Photo';
 
-const Photos = ({ photos }) => {
+const Photos = props => {
 
+  const { query,
+    photos,
+    isFetching,
+    lastUpdated } = props
+  console.log('query = ', query)
   console.log('photos = ', photos)
+  console.log('isFetching = ', isFetching)
+  console.log('lastUpdated = ', lastUpdated)
 
   return (
     <div className="container">

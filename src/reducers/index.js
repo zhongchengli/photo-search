@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
 import { REQUEST_GETS, RECEIVE_GETS } from '../actions'
 
-
 const gets = (state = {
   isFetching: false,
   didInvalidate: false,
@@ -31,7 +30,7 @@ const gets = (state = {
 }
 
 const getsByQuery = (state = {}, action) => {
-  console.log('calling searchByTag in reducer')
+  console.log('calling getsByQuery in reducer')
   switch (action.type) {
     case RECEIVE_GETS:
     case REQUEST_GETS:
@@ -47,6 +46,7 @@ const getsByQuery = (state = {}, action) => {
 }
 
 const query = (state = { tag: '', curr_page: 1 }, action) => {
+  console.log('calling query in reducer and state = ', state)
   switch (action.type) {
     default:
       return state
