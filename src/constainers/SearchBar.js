@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 class SearchBar extends Component {
 
-
   handleSubmit = (tag, curr_page) => {
     this.props.dispatch(searchQuery(tag, curr_page))
   }
@@ -49,13 +48,14 @@ class SearchBar extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log('calling mapStateToProps in SearchBar and state = ', state)
-  const { query, } = state
-  return {
-    query
-  }
-}
+// const mapStateToProps = state => {
+//   console.log('***  calling mapStateToProps in SearchBar')
+//   console.log('state = ', state)
+//   const { query } = state
+//   return {
+//     query
+//   }
+// }
 
-export default connect(mapStateToProps)(SearchBar)
+export default connect()(SearchBar)
 // export default SearchBar

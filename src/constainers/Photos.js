@@ -5,16 +5,21 @@ import { connect } from 'react-redux';
 
 class Photos extends Component {
 
-  componentDidMount() {
-    console.log('calling componentDidMount() in Photos')
-    const { dispatch, query } = this.props;
-    console.log('this.props = ', this.props);
-    dispatch(fetchGetsIfNeeded(query.tag, query.curr_page))
-  }
+  // componentDidMount() {
+  //   console.log('calling componentDidMount() in Photos')
+  //   const { dispatch, query } = this.props;
+  //   console.log('this.props = ', this.props);
+  //   dispatch(fetchGetsIfNeeded(query.tag, query.curr_page))
+  // }
 
   componentDidUpdate(prevProps) {
-    console.log('calling componentDidUpdate() in Photos and prevProps = ', prevProps)
-    if (prevProps.query !== this.props.query) {
+    console.log('***  calling componentDidUpdate() in Photos')
+    console.log('prevProps = ', prevProps)
+    console.log('props = ', this.props)
+
+    if (prevProps.query.tag !== this.props.query.tag
+      || prevProps.query.curr_page !== this.props.query.curr_page) {
+      console.log(' $$$$$$$$$$$$ Going to fetch data $$$$$$$$$$')
       const { dispatch, query } = this.props;
       dispatch(fetchGetsIfNeeded(query.tag, query.curr_page))
     }
@@ -23,13 +28,14 @@ class Photos extends Component {
   render() {
 
     const { photos } = this.props
-    console.log('in Photos render() and this.props = ', this.props)
+    console.log('***  in Photos render()')
+    console.log('this.props = ', this.props)
 
     return (
       <div className="container">
         <div className="album">
-          {photos.map((photo, index) => (
-            <Photo key={index} {...photo} />
+          {photos.map(photo => (
+            <Photo key={photo.id} {...photo} />
           ))}
         </div>
       </div>
@@ -39,22 +45,17 @@ class Photos extends Component {
 }
 
 const mapStateToProps = state => {
-  const { query, getsByQuery } = state
-  console.log('calling mapStateToProps in Album containers and state = ', state);
-  const {
-    isFetching,
-    lastUpdated,
-    items: photos
-  } = getsByQuery[query.tag] || {
-    isFetching: true,
-    items: []
-  }
+  const { searchBar, photoList } = state
+  console.log('***  calling mapStateToProps in Photo containers');
+  console.log('state = ', state)
+  const { isFetching, didInvalidate, photos } = photoList
+  const { tag, curr_page } = searchBar
 
   return {
-    query,
     photos,
+    query: { tag, curr_page },
     isFetching,
-    lastUpdated
+    didInvalidate
   }
 }
 

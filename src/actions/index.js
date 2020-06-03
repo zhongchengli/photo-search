@@ -11,7 +11,7 @@ const CLIENT_ID = 'kxFcWqxQgzwyAgCCTrBJJZm4caXqR_KlqbIjcwko6T8'
 export const searchQuery = (tag, curr_page) => {
   const query = { tag, curr_page }
   return {
-    type: REQUEST_GETS,
+    type: SEARCH_TAG,
     query
   }
 }
@@ -40,11 +40,15 @@ export const keyEnterUpListner = tag => {
 
 // API call
 const fetchGets = (tag, curr_page) => dispatch => {
-  console.log('calling fetchGets in action index')
+  console.log('***  calling fetchGets in action index')
   console.log('tag = ', tag)
   console.log('curr_page = ', curr_page)
   if (tag === '') {
-    return
+    return {
+      isFetching: false,
+      didInvalidate: false,
+      photos: []
+    }
   }
   dispatch(requestGets(tag, curr_page))
   return fetch(`https://api.unsplash.com/search/photos?`
@@ -52,7 +56,6 @@ const fetchGets = (tag, curr_page) => dispatch => {
     + `&page=${curr_page}&per_page=12&auto=format&query=${tag}`)
     .then(response => response.json())
     .then(json => {
-      console.log('json: ', json)
       dispatch(receiveGets(tag, json))
     })
 }
@@ -64,30 +67,26 @@ const requestGets = (tag, curr_page) => ({
 })
 
 const receiveGets = (tag, json) => {
+  console.log('******** receiveGets')
   return {
     type: RECEIVE_GETS,
     tag,
-    gets: json.data.children.map(child => child.data),
+    json,
     recievedAt: Date.now()
   }
 }
 
 const shouldFetchGets = state => {
-  console.log('calling shouldFetchGets in action index and state = ', state)
-  const { query } = state
-  console.log('query = ', query)
-  const gets = state.getsByQuery[query.tag]
+  console.log('***  calling shouldFetchGets in action index')
+  console.log('state = ', state)
+  const { photoList } = state
 
-  if (!gets) {
-    return true
-  }
-  if (gets.isFetching) {
-    return false
-  }
+  return !photoList.isFetching
 }
 
 export const fetchGetsIfNeeded = (tag, curr_page) => (dispatch, getState) => {
-  console.log('calling fetchGetsIfNeeded in actions');
+  console.log('***  calling fetchGetsIfNeeded in actions');
+
   if (shouldFetchGets(getState())) {
     console.log('calling dispatch(fetchGets(tag, curr_page)) in fetchGetsIfNeeded in actions');
     return dispatch(fetchGets(tag, curr_page))
