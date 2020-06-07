@@ -2,7 +2,7 @@ import React from 'react'
 // import Info from "./Info"
 import SearchBar from '../constainers/SearchBar'
 import Photos from '../constainers/Photos'
-// import TabBar from '../constainers/TabBar'
+import Tags from '../constainers/Tags'
 // import Pagination from '../constainers/Pagination'
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
     <div>
       {/* <Info /> */}
       <SearchBar />
-      {/* <TabBar /> */}
+      <Tags />
       {/* <Pagination /> */}
       <Photos />
     </div>

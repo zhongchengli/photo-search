@@ -17,4 +17,3 @@ export const searchBar = (state = { tag: '', curr_page: 1 }, action) => {
   }
 }
 
-

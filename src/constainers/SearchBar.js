@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { searchQuery } from '../actions';
+import { searchTag } from '../actions';
 import { connect } from 'react-redux';
 
 
 class SearchBar extends Component {
 
   handleSubmit = (tag, curr_page) => {
-    this.props.dispatch(searchQuery(tag, curr_page))
+    this.props.dispatch(searchTag(tag, curr_page))
   }
 
   render() {
@@ -22,7 +22,7 @@ class SearchBar extends Component {
             return
           }
           console.log('test')
-          dispatch(searchQuery(textInput.value, 1))
+          dispatch(searchTag(textInput.value, 1))
         }}>
           <div className="container">
             <div className="row">
@@ -32,7 +32,6 @@ class SearchBar extends Component {
                     type="text"
                     ref={node => (textInput = node)}
                     className="search-query form-control"
-                    // onKeyUp={() => dispatch(keyEnterUpListner(textInput.value))}
                     placeholder="Search" />
                   <span className="input-group-btn">
                     <button className="btn btn-danger" type="submit">

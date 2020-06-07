@@ -8,7 +8,7 @@ const CLIENT_ID = 'kxFcWqxQgzwyAgCCTrBJJZm4caXqR_KlqbIjcwko6T8'
 
 // NOTE: Action Creator
 
-export const searchQuery = (tag, curr_page) => {
+export const searchTag = (tag, curr_page) => {
   const query = { tag, curr_page }
   return {
     type: SEARCH_TAG,
@@ -16,24 +16,19 @@ export const searchQuery = (tag, curr_page) => {
   }
 }
 
-export const clickOnTag = tag => {
+export const clickOnTag = (tag, curr_page) => {
+  const query = { tag, curr_page }
   return {
     type: CLICK_ON_TAG,
-    tag
+    query
   }
 }
 
-export const gotoPage = curr_page => {
+export const gotoPage = (tag, page) => {
+  const query = { tag, page }
   return {
     type: GOTO_PAGE,
-    curr_page
-  }
-}
-
-export const keyEnterUpListner = tag => {
-  return {
-    type: KEY_ENTER_UP,
-    tag
+    query
   }
 }
 

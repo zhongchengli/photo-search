@@ -5,13 +5,6 @@ import { connect } from 'react-redux';
 
 class Photos extends Component {
 
-  // componentDidMount() {
-  //   console.log('calling componentDidMount() in Photos')
-  //   const { dispatch, query } = this.props;
-  //   console.log('this.props = ', this.props);
-  //   dispatch(fetchGetsIfNeeded(query.tag, query.curr_page))
-  // }
-
   componentDidUpdate(prevProps) {
     console.log('***  calling componentDidUpdate() in Photos')
     console.log('prevProps = ', prevProps)

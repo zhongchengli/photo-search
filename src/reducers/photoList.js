@@ -1,12 +1,5 @@
 import { REQUEST_GETS, RECEIVE_GETS } from "../actions";
-
-
-const readJSON = json => {
-  const obj = JSON.parse(JSON.stringify(json))
-  console.log('obj = ', obj.results)
-  return obj.results.map(result => JSON.parse(JSON.stringify(result)));
-  // return
-}
+import { readJSON } from ".";
 
 export const photoList = (state = {
   isFetching: false,
