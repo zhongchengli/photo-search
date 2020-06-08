@@ -18,11 +18,13 @@ class Tags extends Component {
     return (
       <div className="tags">
         <h1>{currentSearch}</h1>
-        {
-          tags.map((tag, index) =>
-            <Tag key={index} tag={tag}
-              onClick={() => this.clickOnTag(tag, 1)} />)
-        }
+        <p className="tag">
+          {
+            tags.map((tag, index) =>
+              <Tag key={index} tag={tag}
+                onClick={() => this.clickOnTag(tag, 1)} />)
+          }
+        </p>
       </div>
     )
   }
