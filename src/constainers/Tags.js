@@ -16,15 +16,17 @@ class Tags extends Component {
     const tags = this.props.tags
 
     return (
-      <div className="tags">
-        <h1>{currentSearch}</h1>
-        <p className="tag">
-          {
-            tags.map((tag, index) =>
-              <Tag key={index} tag={tag}
-                onClick={() => this.clickOnTag(tag, 1)} />)
-          }
-        </p>
+      <div className="container">
+        <div className="tags">
+          <h1>{currentSearch}</h1>
+          <p className="tag">
+            {
+              tags.map((tag, index) =>
+                <Tag key={index} tag={tag}
+                  onClick={() => this.clickOnTag(tag, 1)} />)
+            }
+          </p>
+        </div>
       </div>
     )
   }

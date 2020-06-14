@@ -21,7 +21,6 @@ class SearchBar extends Component {
           if (!textInput.value.trim()) {
             return
           }
-          console.log('test')
           dispatch(searchTag(textInput.value, 1))
         }}>
           <div className="container">
@@ -47,14 +46,4 @@ class SearchBar extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   console.log('***  calling mapStateToProps in SearchBar')
-//   console.log('state = ', state)
-//   const { query } = state
-//   return {
-//     query
-//   }
-// }
-
 export default connect()(SearchBar)
-// export default SearchBar

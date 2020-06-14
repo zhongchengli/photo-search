@@ -7,10 +7,6 @@ export const photoList = (state = {
   photos: []
 }, action) => {
 
-  console.log('***  calling photoList in reducer')
-  console.log(' state = ', state)
-  console.log(' action = ', action)
-
   switch (action.type) {
     case REQUEST_GETS:
       return {
