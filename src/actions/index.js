@@ -35,9 +35,6 @@ export const gotoPage = (tag, page) => {
 
 // API call
 const fetchGets = (tag, curr_page) => dispatch => {
-  console.log('***  calling fetchGets in action index')
-  console.log('tag = ', tag)
-  console.log('curr_page = ', curr_page)
   if (tag === '') {
     return {
       isFetching: false,
@@ -62,7 +59,6 @@ const requestGets = (tag, curr_page) => ({
 })
 
 const receiveGets = (tag, json) => {
-  console.log('******** receiveGets')
   return {
     type: RECEIVE_GETS,
     tag,
@@ -72,18 +68,14 @@ const receiveGets = (tag, json) => {
 }
 
 const shouldFetchGets = state => {
-  console.log('***  calling shouldFetchGets in action index')
-  console.log('state = ', state)
   const { photoList } = state
 
   return !photoList.isFetching
 }
 
 export const fetchGetsIfNeeded = (tag, curr_page) => (dispatch, getState) => {
-  console.log('***  calling fetchGetsIfNeeded in actions');
 
   if (shouldFetchGets(getState())) {
-    console.log('calling dispatch(fetchGets(tag, curr_page)) in fetchGetsIfNeeded in actions');
     return dispatch(fetchGets(tag, curr_page))
   }
 }

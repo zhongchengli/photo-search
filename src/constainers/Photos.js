@@ -6,13 +6,9 @@ import { connect } from 'react-redux';
 class Photos extends Component {
 
   componentDidUpdate(prevProps) {
-    console.log('***  calling componentDidUpdate() in Photos')
-    console.log('prevProps = ', prevProps)
-    console.log('props = ', this.props)
 
     if (prevProps.query.tag !== this.props.query.tag
       || prevProps.query.curr_page !== this.props.query.curr_page) {
-      console.log(' $$$$$$$$$$$$ Going to fetch data $$$$$$$$$$')
       const { dispatch, query } = this.props;
       dispatch(fetchGetsIfNeeded(query.tag, query.curr_page))
     }
@@ -21,8 +17,6 @@ class Photos extends Component {
   render() {
 
     const { photos } = this.props
-    console.log('***  in Photos render()')
-    console.log('this.props = ', this.props)
 
     return (
       <div className="container">
@@ -39,8 +33,6 @@ class Photos extends Component {
 
 const mapStateToProps = state => {
   const { searchBar, photoList } = state
-  console.log('***  calling mapStateToProps in Photo containers');
-  console.log('state = ', state)
   const { isFetching, didInvalidate, photos } = photoList
   const { tag, curr_page } = searchBar
 
