@@ -1,12 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { Button } from 'react-bootstrap';
 
 const Tag = ({ tag, onClick }) => {
 
   return (
-    <button
-      type="button"
-      className="btn btn-default tag"
-      onClick={onClick}>{tag}</ button>
+    <Button variant="outline-secondary" onClick={onClick}>{tag}</Button>
   )
 }
 

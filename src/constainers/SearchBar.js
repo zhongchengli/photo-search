@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { searchTag } from '../actions';
 import { connect } from 'react-redux';
 import { FormControl, Button, Form } from 'react-bootstrap'

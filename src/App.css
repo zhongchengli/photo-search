@@ -37,11 +37,6 @@
     z-index: 3;
 }
 
-body{
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
-
 .pages{
     margin: auto;
     text-align: center;
@@ -60,6 +55,10 @@ body{
 .tag {
     padding: 10px;
     margin: 5px;
+}
+
+.tag button {
+    margin: 3px;
 }
 
 .album {
