@@ -8,16 +8,16 @@ const CLIENT_ID = 'kxFcWqxQgzwyAgCCTrBJJZm4caXqR_KlqbIjcwko6T8'
 
 // NOTE: Action Creator
 
-export const searchTag = (tag, curr_page) => {
-  const query = { tag, curr_page }
+export const searchTag = (tag, currPage) => {
+  const query = { tag, currPage }
   return {
     type: SEARCH_TAG,
     query
   }
 }
 
-export const clickOnTag = (tag, curr_page) => {
-  const query = { tag, curr_page }
+export const clickOnTag = (tag, currPage) => {
+  const query = { tag, currPage }
   return {
     type: CLICK_ON_TAG,
     query
@@ -34,7 +34,7 @@ export const gotoPage = (tag, page) => {
 
 
 // API call
-const fetchGets = (tag, curr_page) => dispatch => {
+const fetchGets = (tag, currPage) => dispatch => {
   if (tag === '') {
     return {
       isFetching: false,
@@ -42,20 +42,20 @@ const fetchGets = (tag, curr_page) => dispatch => {
       photos: []
     }
   }
-  dispatch(requestGets(tag, curr_page))
+  dispatch(requestGets(tag, currPage))
   return fetch(`https://api.unsplash.com/search/photos?`
     + `client_id=${CLIENT_ID}`
-    + `&page=${curr_page}&per_page=12&auto=format&query=${tag}`)
+    + `&page=${currPage}&per_page=12&auto=format&query=${tag}`)
     .then(response => response.json())
     .then(json => {
       dispatch(receiveGets(tag, json))
     })
 }
 
-const requestGets = (tag, curr_page) => ({
+const requestGets = (tag, currPage) => ({
   type: REQUEST_GETS,
   tag,
-  curr_page
+  currPage
 })
 
 const receiveGets = (tag, json) => {
@@ -73,9 +73,9 @@ const shouldFetchGets = state => {
   return !photoReducer.isFetching
 }
 
-export const fetchGetsIfNeeded = (tag, curr_page) => (dispatch, getState) => {
+export const fetchGetsIfNeeded = (tag, currPage) => (dispatch, getState) => {
 
   if (shouldFetchGets(getState())) {
-    return dispatch(fetchGets(tag, curr_page))
+    return dispatch(fetchGets(tag, currPage))
   }
 }

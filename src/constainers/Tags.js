@@ -5,9 +5,8 @@ import { clickOnTag } from '../actions'
 
 class Tags extends Component {
 
-  clickOnTag = (tag, curr_page) => {
-    console.log('Click on tag: ', tag);
-    this.props.dispatch(clickOnTag(tag, curr_page));
+  clickOnTag = (tag, currPage) => {
+    this.props.dispatch(clickOnTag(tag, currPage));
   }
 
   render() {

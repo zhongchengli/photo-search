@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pagination } from 'react-bootstrap';
 
-const Page = (tag, totalPages, currPage, onClick) => {
+const Page = ({ tag, totalPages, currPage, onClick }) => {
 
   console.log('onClick = ', onclick);
 
@@ -21,7 +21,7 @@ const Page = (tag, totalPages, currPage, onClick) => {
           <Pagination.Item disabled>{14}</Pagination.Item>
 
           <Pagination.Ellipsis />
-          <Pagination.Item>{20}</Pagination.Item>
+          <Pagination.Item>{totalPages}</Pagination.Item>
           <Pagination.Next />
           <Pagination.Last />
         </Pagination >

@@ -8,9 +8,9 @@ class Photos extends Component {
   componentDidUpdate(prevProps) {
 
     if (prevProps.query.tag !== this.props.query.tag
-      || prevProps.query.curr_page !== this.props.query.curr_page) {
+      || prevProps.query.currPage !== this.props.query.currPage) {
       const { dispatch, query } = this.props;
-      dispatch(fetchGetsIfNeeded(query.tag, query.curr_page))
+      dispatch(fetchGetsIfNeeded(query.tag, query.currPage))
     }
   }
 
@@ -34,11 +34,11 @@ class Photos extends Component {
 const mapStateToProps = state => {
   const { searchRecuder, photoReducer } = state
   const { isFetching, didInvalidate, photos } = photoReducer
-  const { tag, curr_page } = searchRecuder
+  const { tag, currPage } = searchRecuder
 
   return {
     photos,
-    query: { tag, curr_page },
+    query: { tag, currPage },
     isFetching,
     didInvalidate
   }

@@ -7,13 +7,13 @@ The request will need an API key, please refer to [here](https://unsplash.com/do
 ### Tech stack
 1. [X] React
 2. [X] Redux
-3. [X] Bootstrap (To be replaced by reactstrap)
+3. [X] Reactbootstrp
 4. [ ] React Hooks (TODO)
 
 ### Features
 1. [X] Search bar
 2. [X] Display tags
-3. [ ] Click on Tag for searching
+3. [X] Click on Tag for searching
 4. [ ] Pagination
 
 ## Build project

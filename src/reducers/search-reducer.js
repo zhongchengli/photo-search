@@ -1,6 +1,6 @@
 import { SEARCH_TAG, CLICK_ON_TAG } from "../actions"
 
-export const searchRecuder = (state = { tag: '', curr_page: 1 }, action) => {
+export const searchRecuder = (state = { tag: '', currPage: 1 }, action) => {
   const { query } = action
   switch (action.type) {
     case SEARCH_TAG:
@@ -8,7 +8,7 @@ export const searchRecuder = (state = { tag: '', curr_page: 1 }, action) => {
       return {
         ...state,
         tag: query.tag,
-        curr_page: query.curr_page
+        currPage: query.currPage
       }
     default:
       return state
