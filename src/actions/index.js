@@ -77,5 +77,7 @@ export const fetchGetsIfNeeded = (tag, currPage) => (dispatch, getState) => {
 
   if (shouldFetchGets(getState())) {
     return dispatch(fetchGets(tag, currPage))
+  } else {
+    return Promise.resolve();
   }
 }
