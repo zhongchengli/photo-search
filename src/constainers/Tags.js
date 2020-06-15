@@ -41,9 +41,9 @@ const capitalize = (s) => {
 }
 
 const mapStateToProps = state => {
-  const { searchBar, photoList } = state
-  const { tag } = searchBar
-  const { photos } = photoList
+  const { searchRecuder, photoReducer } = state
+  const { tag } = searchRecuder
+  const { photos } = photoReducer
 
   let tags = [];
 
@@ -56,7 +56,6 @@ const mapStateToProps = state => {
   tags = tags.filter((value, index) =>
     tags.indexOf(value) === index).map(title =>
       capitalize(title))
-
 
   return {
     tag,

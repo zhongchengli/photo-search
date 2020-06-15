@@ -1,6 +1,6 @@
 import { SEARCH_TAG, CLICK_ON_TAG } from "../actions"
 
-export const searchBar = (state = { tag: '', curr_page: 1 }, action) => {
+export const searchRecuder = (state = { tag: '', curr_page: 1 }, action) => {
   const { query } = action
   switch (action.type) {
     case SEARCH_TAG:

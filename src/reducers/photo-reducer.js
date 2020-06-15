@@ -1,7 +1,6 @@
 import { REQUEST_GETS, RECEIVE_GETS } from "../actions";
-import { readJSON } from ".";
 
-export const photoList = (state = {
+export const photoReducer = (state = {
   isFetching: false,
   didInvalidate: false,
   photos: []
@@ -15,11 +14,13 @@ export const photoList = (state = {
         didInvalidate: false
       }
     case RECEIVE_GETS:
+      const jsonResult = JSON.parse(JSON.stringify(action.json))
       return {
         ...state,
         isFetching: false,
         didInvalidate: false,
-        photos: readJSON(action.json),
+        photos: jsonResult.results,
+        totalPages: jsonResult.total_pages,
         lastUpdated: action.receivedAt
       }
     default:

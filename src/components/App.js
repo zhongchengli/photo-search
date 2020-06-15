@@ -1,10 +1,9 @@
 import React from 'react'
 // import Info from "./Info"
-// import SearchBar from '../constainers/SearchBar'
 import Photos from '../constainers/Photos'
 import Tags from '../constainers/Tags'
 import Navigation from './Navigation'
-// import Pagination from '../constainers/Pagination'
+import Pages from '../constainers/Pages'
 
 const App = () => {
   return (
@@ -15,6 +14,7 @@ const App = () => {
       <Tags />
       {/* <Pagination /> */}
       <Photos />
+      <Pages />
     </div>
   )
 }

@@ -32,9 +32,9 @@ class Photos extends Component {
 }
 
 const mapStateToProps = state => {
-  const { searchBar, photoList } = state
-  const { isFetching, didInvalidate, photos } = photoList
-  const { tag, curr_page } = searchBar
+  const { searchRecuder, photoReducer } = state
+  const { isFetching, didInvalidate, photos } = photoReducer
+  const { tag, curr_page } = searchRecuder
 
   return {
     photos,

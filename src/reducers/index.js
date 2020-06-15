@@ -1,12 +1,15 @@
 import { combineReducers } from 'redux'
-import { searchBar } from './search-reducer'
-import { photoList } from './photoList'
+import { searchRecuder } from './search-reducer'
+import { photoReducer } from './photo-reducer'
 
-export const readJSON = json => {
-  const obj = JSON.parse(JSON.stringify(json))
-  return obj.results.map(result => JSON.parse(JSON.stringify(result)));
-}
+// export const readJSON = json => {
+//   console.log('json = ', json);
+//   const obj = JSON.parse(JSON.stringify(json))
+//   const results = obj.results.map(result => JSON.parse(JSON.stringify(result)));
+//   console.log('obj = ', obj);
+//   return { totalPages: obj.total_pags, results };
+// }
 
-const searchPhotoApp = combineReducers({ searchBar, photoList })
+const searchPhotoApp = combineReducers({ searchRecuder, photoReducer })
 
 export default searchPhotoApp

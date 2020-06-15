@@ -68,9 +68,9 @@ const receiveGets = (tag, json) => {
 }
 
 const shouldFetchGets = state => {
-  const { photoList } = state
+  const { photoReducer } = state
 
-  return !photoList.isFetching
+  return !photoReducer.isFetching
 }
 
 export const fetchGetsIfNeeded = (tag, curr_page) => (dispatch, getState) => {
