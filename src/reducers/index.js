@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { searchBar } from './searchBar'
+import { searchBar } from './search-reducer'
 import { photoList } from './photoList'
 
 export const readJSON = json => {
