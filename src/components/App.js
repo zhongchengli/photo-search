@@ -1,17 +1,17 @@
 import React from 'react'
 // import Info from "./Info"
-import SearchBar from '../constainers/SearchBar'
+// import SearchBar from '../constainers/SearchBar'
 import Photos from '../constainers/Photos'
 import Tags from '../constainers/Tags'
-// import Navigation from './Navigation'
+import Navigation from './Navigation'
 // import Pagination from '../constainers/Pagination'
 
 const App = () => {
   return (
     <div>
-      {/* <Navigation /> */}
+      <Navigation />
       {/* <Info /> */}
-      <SearchBar />
+
       <Tags />
       {/* <Pagination /> */}
       <Photos />

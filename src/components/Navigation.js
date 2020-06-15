@@ -1,5 +1,6 @@
 import React from 'react'
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
+import SearchBar from '../constainers/SearchBar';
 
 const Navigation = () => {
   return (
@@ -7,13 +8,10 @@ const Navigation = () => {
       <Navbar.Brand href="#home">Navbar</Navbar.Brand>
       <Nav className="mr-auto">
         <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#features">Features</Nav.Link>
+        <Nav.Link href="#About Me">Features</Nav.Link>
         <Nav.Link href="#pricing">Pricing</Nav.Link>
       </Nav>
-      <Form inline>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        <Button variant="outline-info">Search</Button>
-      </Form>
+      <SearchBar />
     </Navbar>
   )
 }
