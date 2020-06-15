@@ -10,11 +10,10 @@ const App = () => {
     <div>
       <Navigation />
       {/* <Info /> */}
-
       <Tags />
-      {/* <Pagination /> */}
       <Photos />
       <Pages />
+      {/* <Route path="/myprofile" component={MyProfile} /> */}
     </div>
   )
 }

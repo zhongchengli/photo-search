@@ -1,11 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import './App.css';
-import App from './components/App';
-import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import reducer from './reducers'
 import thunk from 'redux-thunk';
+import Root from './components/Root';
 
 
 const middleware = [thunk]
@@ -16,10 +15,5 @@ const store = createStore(reducer, applyMiddleware(...middleware))
 //   middleware.push(createLogger())
 // }
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+render(<Root store={store} />, document.getElementById('root'))
 
