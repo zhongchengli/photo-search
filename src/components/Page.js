@@ -1,9 +1,14 @@
 import React from 'react';
 import { Pagination } from 'react-bootstrap';
+// import { useSelector } from 'react-redux';
 
 const Page = ({ tag, totalPages, currPage, onClick }) => {
 
-  console.log('onClick = ', onclick);
+  // const myState = useSelector(state => state);
+
+  // console.log('myState = ', myState);
+
+  // console.log('onClick = ', onClick);
 
   return (
     <div className="container">

@@ -1,35 +1,50 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Tag from '../components/Tag'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { clickOnTag } from '../actions'
 
-class Tags extends Component {
+const Tags = () => {
+  const currentSearch = useSelector((state) => {
+    // @ts-ignore
+    const { searchRecuder } = state;
+    const { tag } = searchRecuder;
+    return tag;
+  })
 
-  clickOnTag = (tag, currPage) => {
-    this.props.dispatch(clickOnTag(tag, currPage));
-  }
+  const tags = useSelector(state => {
+    // @ts-ignore
+    const { photoReducer } = state;
 
-  render() {
+    const { photos } = photoReducer;
+    let tags = [];
+    photos.forEach(photo => {
+      photo.tags.forEach(tag => {
+        tags.push(tag.title)
+      })
+    })
 
-    const currentSearch = this.props.tag
+    tags = tags.filter((value, index) =>
+      tags.indexOf(value) === index).map(title =>
+        capitalize(title))
+    return tags;
+  })
 
-    const tags = this.props.tags
+  const dispatch = useDispatch();
 
-    return (
-      <div className="container">
-        <div className="tags">
-          <h1>{currentSearch}</h1>
-          <p className="tag">
-            {
-              tags.map((tag, index) =>
-                <Tag key={index} tag={tag}
-                  onClick={() => this.clickOnTag(tag, 1)} />)
-            }
-          </p>
-        </div>
+  return (
+    <div className="container">
+      <div className="tags">
+        <h1>{currentSearch}</h1>
+        <p className="tag">
+          {
+            tags.map((tag, index) =>
+              <Tag key={index} tag={tag}
+                onClick={() => dispatch(clickOnTag(tag, 1))} />)
+          }
+        </p>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 const capitalize = (s) => {
@@ -39,27 +54,4 @@ const capitalize = (s) => {
   return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-const mapStateToProps = state => {
-  const { searchRecuder, photoReducer } = state
-  const { tag } = searchRecuder
-  const { photos } = photoReducer
-
-  let tags = [];
-
-  photos.forEach(photo => {
-    photo.tags.forEach(tag => {
-      tags.push(tag.title)
-    })
-  })
-
-  tags = tags.filter((value, index) =>
-    tags.indexOf(value) === index).map(title =>
-      capitalize(title))
-
-  return {
-    tag,
-    tags
-  }
-}
-
-export default connect(mapStateToProps)(Tags)
+export default Tags;

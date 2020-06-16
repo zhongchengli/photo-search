@@ -1,47 +1,52 @@
-import React, { Component } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Photo from '../components/Photo';
+// @ts-ignore
 import { fetchGetsIfNeeded } from '../actions';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-class Photos extends Component {
+const Photos = () => {
 
-  componentDidUpdate(prevProps) {
+  // @ts-ignore
+  const dispatch = useDispatch();
 
-    if (prevProps.query.tag !== this.props.query.tag
-      || prevProps.query.currPage !== this.props.query.currPage) {
-      const { dispatch, query } = this.props;
-      dispatch(fetchGetsIfNeeded(query.tag, query.currPage))
-    }
-  }
-
-  render() {
-
-    const { photos } = this.props
-
-    return (
-      <div className="container">
-        <div className="album">
-          {photos.map(photo => (
-            <Photo key={photo.id} {...photo} />
-          ))}
-        </div>
-      </div>
-    )
-  }
-
-}
-
-const mapStateToProps = state => {
-  const { searchRecuder, photoReducer } = state
-  const { isFetching, didInvalidate, photos } = photoReducer
-  const { tag, currPage } = searchRecuder
-
-  return {
+  const {
     photos,
-    query: { tag, currPage },
-    isFetching,
-    didInvalidate
-  }
+    query
+    // isFetching,
+    // didInvalidate
+  } = useSelector(state => {
+    // @ts-ignore
+    const { searchRecuder, photoReducer } = state
+    const { isFetching, didInvalidate, photos } = photoReducer
+    const { tag, currPage } = searchRecuder
+
+
+    return { photos, query: { tag, currPage }, isFetching, didInvalidate };
+  })
+
+  const prevTag = usePrevious(query.tag);
+
+  useEffect(() => {
+    if (prevTag !== query.tag) {
+      dispatch(fetchGetsIfNeeded(query.tag, query.currPage));
+    }
+  })
+
+  return (
+    <div className="container">
+      <div className="album">
+        {photos.map(photo => (
+          <Photo key={photo.id} {...photo} />
+        ))}
+      </div>
+    </div>
+  )
 }
 
-export default connect(mapStateToProps)(Photos)
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => { ref.current = value; }, [value]);
+  return ref.current;
+}
+
+export default Photos;
