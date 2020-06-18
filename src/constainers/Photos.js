@@ -26,6 +26,7 @@ const Photos = () => {
 
   const prevTag = usePrevious(query.tag);
 
+  // combination of componentDidMount, componentDidUpdate and componentWillUnmount
   useEffect(() => {
     if (prevTag !== query.tag) {
       dispatch(fetchGetsIfNeeded(query.tag, query.currPage));
@@ -43,7 +44,7 @@ const Photos = () => {
   )
 }
 
-function usePrevious(value) {
+const usePrevious = value => {
   const ref = useRef();
   useEffect(() => { ref.current = value; }, [value]);
   return ref.current;

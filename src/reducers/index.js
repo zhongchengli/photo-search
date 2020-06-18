@@ -10,6 +10,6 @@ import { photoReducer } from './photo-reducer'
 //   return { totalPages: obj.total_pags, results };
 // }
 
-const searchPhotoApp = combineReducers({ searchRecuder, photoReducer })
+export const searchPhotoApp = combineReducers({ searchRecuder, photoReducer })
 
-export default searchPhotoApp
+// export default searchPhotoApp
