@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { clickOnTag } from '../actions'
 
 const Tags = () => {
-  const currentSearch = useSelector((state) => {
+  const currentSearch = useSelector(state => {
     // @ts-ignore
     const { searchRecuder } = state;
     const { tag } = searchRecuder;
